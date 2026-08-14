@@ -1,0 +1,831 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#090b14">
+  <meta name="description" content="Connectly — meet people, make connections and chat.">
+
+  <title>Connectly</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div id="app">
+
+  <!-- ================= LOGIN ================= -->
+  <section id="loginView" class="auth-view">
+    <div class="auth-background"></div>
+
+    <div class="auth-card">
+
+      <div class="brand">
+        <div class="brand-icon">
+          <i class="fas fa-link"></i>
+        </div>
+        <div>
+          <h1>Connectly</h1>
+          <p>Meet. Connect. Belong.</p>
+        </div>
+      </div>
+
+      <div class="auth-heading">
+        <span class="eyebrow">WELCOME BACK</span>
+        <h2>Good to see you again.</h2>
+        <p>Sign in to continue your Connectly journey.</p>
+      </div>
+
+      <form id="loginFormElem" class="auth-form">
+
+        <label>
+          Email
+          <div class="input-wrap">
+            <i class="fas fa-envelope"></i>
+            <input id="loginEmail" type="email" placeholder="you@example.com" required>
+          </div>
+        </label>
+
+        <label>
+          Password
+          <div class="input-wrap">
+            <i class="fas fa-lock"></i>
+            <input id="loginPassword" type="password" placeholder="Your password" required>
+            <i class="fas fa-eye toggle-pwd" data-target="loginPassword"></i>
+          </div>
+        </label>
+
+        <div id="loginReferralGroup" class="referral-group hidden">
+          <label>
+            Referral code
+            <div class="input-wrap">
+              <i class="fas fa-gift"></i>
+              <input id="loginReferralCode" readonly>
+            </div>
+          </label>
+        </div>
+
+        <div class="auth-options">
+          <button type="button" id="forgotPasswordBtn" class="text-btn">
+            Forgot password?
+          </button>
+        </div>
+
+        <button class="primary-btn full" type="submit">
+          <span>Sign In</span>
+          <i class="fas fa-arrow-right"></i>
+        </button>
+
+      </form>
+
+      <div class="divider">
+        <span>or continue with</span>
+      </div>
+
+      <button id="googleSignInBtn" class="google-btn">
+        <i class="fab fa-google"></i>
+        Continue with Google
+      </button>
+
+      <p class="auth-switch">
+        Don't have an account?
+        <button id="goToSignupLink" class="text-btn">Create one</button>
+      </p>
+
+      <button id="appealBanBtn" class="subtle-btn">
+        <i class="fas fa-gavel"></i> Appeal a banned account
+      </button>
+
+    </div>
+  </section>
+
+
+  <!-- ================= SIGN UP ================= -->
+  <section id="signupView" class="auth-view hidden">
+
+    <div class="auth-background"></div>
+
+    <div class="auth-card signup-card">
+
+      <div class="brand">
+        <div class="brand-icon">
+          <i class="fas fa-link"></i>
+        </div>
+        <div>
+          <h1>Connectly</h1>
+          <p>Start something meaningful.</p>
+        </div>
+      </div>
+
+      <div class="auth-heading">
+        <span class="eyebrow">CREATE ACCOUNT</span>
+        <h2>Join Connectly.</h2>
+        <p>Create your profile and start meeting people.</p>
+      </div>
+
+      <form id="signupFormElem" class="auth-form">
+
+        <label>
+          Name
+          <div class="input-wrap">
+            <i class="fas fa-user"></i>
+            <input id="signupName" type="text" placeholder="Your name" required>
+          </div>
+        </label>
+
+        <div class="two-inputs">
+
+          <label>
+            Age
+            <div class="input-wrap">
+              <i class="fas fa-cake-candles"></i>
+              <input id="signupAge" type="number" min="18" max="100" placeholder="Age" required>
+            </div>
+          </label>
+
+          <label>
+            Gender
+            <div class="input-wrap">
+              <i class="fas fa-venus-mars"></i>
+              <select id="signupGender" required>
+                <option value="">Select</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </label>
+
+        </div>
+
+        <label>
+          Email
+          <div class="input-wrap">
+            <i class="fas fa-envelope"></i>
+            <input id="signupEmail" type="email" placeholder="you@example.com" required>
+          </div>
+        </label>
+
+        <label>
+          Password
+          <div class="input-wrap">
+            <i class="fas fa-lock"></i>
+            <input id="signupPassword" type="password" placeholder="Create a password" required>
+            <i class="fas fa-eye toggle-pwd" data-target="signupPassword"></i>
+          </div>
+        </label>
+
+        <label>
+          Confirm password
+          <div class="input-wrap">
+            <i class="fas fa-shield-halved"></i>
+            <input id="confirmPwd" type="password" placeholder="Repeat password" required>
+          </div>
+        </label>
+
+        <label>
+          Referral code <span class="optional">(optional)</span>
+          <div class="input-wrap">
+            <i class="fas fa-gift"></i>
+            <input id="signupReferralCode" type="text" placeholder="Referral code">
+          </div>
+        </label>
+
+        <button class="primary-btn full" type="submit">
+          Create Account
+          <i class="fas fa-arrow-right"></i>
+        </button>
+
+      </form>
+
+      <div class="divider">
+        <span>or</span>
+      </div>
+
+      <button id="googleSignUpBtn" class="google-btn">
+        <i class="fab fa-google"></i>
+        Sign up with Google
+      </button>
+
+      <p class="auth-switch">
+        Already have an account?
+        <button id="goToLoginLink" class="text-btn">Sign in</button>
+      </p>
+
+    </div>
+  </section>
+
+
+  <!-- ================= MAIN APP ================= -->
+  <main id="mainApp" class="main-app hidden">
+
+    <!-- TOP BAR -->
+    <header class="topbar">
+
+      <div class="topbar-brand">
+        <div class="mini-logo">
+          <i class="fas fa-link"></i>
+        </div>
+        <span>Connectly</span>
+      </div>
+
+      <div class="topbar-actions">
+
+        <button class="icon-btn" id="watchStoriesBtn" title="Stories">
+          <i class="fas fa-circle-play"></i>
+        </button>
+
+        <button class="icon-btn notification-btn" title="Notifications">
+          <i class="fas fa-bell"></i>
+          <span class="notification-indicator"></span>
+        </button>
+
+        <button class="avatar-button" data-nav="profile">
+          <img id="topAvatar"
+               src="https://randomuser.me/api/portraits/lego/1.jpg"
+               alt="Profile">
+        </button>
+
+      </div>
+
+    </header>
+
+
+    <!-- CONTENT -->
+    <div class="app-layout">
+
+      <!-- ================= DESKTOP SIDEBAR ================= -->
+      <aside class="sidebar">
+
+        <div class="sidebar-profile">
+          <img id="sidebarAvatar"
+               src="https://randomuser.me/api/portraits/lego/1.jpg"
+               alt="Profile">
+
+          <div>
+            <strong id="sidebarName">Connectly User</strong>
+            <span>View profile</span>
+          </div>
+
+          <button data-nav="profile">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+        </div>
+
+        <nav class="side-navigation">
+
+          <button class="nav-item active" data-nav="swipe">
+            <i class="fas fa-heart"></i>
+            <span>Discover</span>
+          </button>
+
+          <button class="nav-item" data-nav="explore">
+            <i class="fas fa-compass"></i>
+            <span>Explore</span>
+          </button>
+
+          <button class="nav-item" data-nav="messages">
+            <i class="fas fa-message"></i>
+            <span>Messages</span>
+            <span id="messageBadge" class="nav-badge hidden">0</span>
+          </button>
+
+          <button class="nav-item" data-nav="stories">
+            <i class="fas fa-circle-play"></i>
+            <span>Stories</span>
+          </button>
+
+          <button class="nav-item" data-nav="profile">
+            <i class="fas fa-user"></i>
+            <span>Profile</span>
+          </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+          <button class="side-action" id="aiChatToggleBtn">
+            <span class="action-icon ai-icon">
+              <i class="fas fa-wand-magic-sparkles"></i>
+            </span>
+            <span>
+              <strong>Connectly AI</strong>
+              <small>Your smart companion</small>
+            </span>
+          </button>
+
+          <div class="sidebar-footer">
+            <span>Connectly</span>
+            <span>v2.0</span>
+          </div>
+
+        </div>
+
+      </aside>
+
+
+      <!-- ================= MAIN CONTENT ================= -->
+      <section class="content-area">
+
+        <!-- ================= SWIPE ================= -->
+        <section id="swipeView" class="view active-view">
+
+          <div class="view-header">
+
+            <div>
+              <span class="eyebrow">DISCOVER</span>
+              <h2>Find your connection</h2>
+              <p>Meet people who share your interests.</p>
+            </div>
+
+            <button class="round-action" id="refreshProfilesBtn">
+              <i class="fas fa-rotate"></i>
+            </button>
+
+          </div>
+
+          <div class="swipe-counter" id="swipeCounter">
+            Loading swipes...
+          </div>
+
+          <div class="swipe-stage">
+
+            <div id="cardsStack" class="cards-stack">
+              <div class="loading-card">
+                <div class="loader"></div>
+                <p>Finding people for you...</p>
+              </div>
+            </div>
+
+          </div>
+
+          <div class="swipe-actions">
+
+            <button id="passBtn" class="swipe-action pass">
+              <i class="fas fa-xmark"></i>
+            </button>
+
+            <button id="boostProfileBtn" class="swipe-action boost">
+              <i class="fas fa-bolt"></i>
+            </button>
+
+            <button id="likeBtn" class="swipe-action like">
+              <i class="fas fa-heart"></i>
+            </button>
+
+          </div>
+
+        </section>
+
+
+        <!-- ================= EXPLORE ================= -->
+        <section id="exploreView" class="view">
+
+          <div class="view-header">
+
+            <div>
+              <span class="eyebrow">EXPLORE</span>
+              <h2>Discover people</h2>
+              <p>Use filters to find your kind of people.</p>
+            </div>
+
+            <button class="round-action" id="applyFilterBtn">
+              <i class="fas fa-sliders"></i>
+            </button>
+
+          </div>
+
+          <div class="filter-panel">
+
+            <div class="filter-field">
+              <label>Minimum age</label>
+              <input id="filterAgeMin" type="number" min="18" value="18">
+            </div>
+
+            <div class="filter-field">
+              <label>Maximum age</label>
+              <input id="filterAgeMax" type="number" max="100" value="100">
+            </div>
+
+            <div class="filter-field">
+              <label>Distance</label>
+              <select id="filterDistance">
+                <option value="10">10 km</option>
+                <option value="25">25 km</option>
+                <option value="50" selected>50 km</option>
+                <option value="100">100 km</option>
+                <option value="500">500 km</option>
+              </select>
+            </div>
+
+            <div class="filter-field">
+              <label>Gender</label>
+              <select id="filterGender">
+                <option value="">Everyone</option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+
+            <div class="filter-field">
+              <label>Intent</label>
+              <select id="filterIntent">
+                <option value="">Any intention</option>
+                <option value="Serious">Serious</option>
+                <option value="Friendship">Friendship</option>
+                <option value="Casual">Casual</option>
+                <option value="Networking">Networking</option>
+              </select>
+            </div>
+
+          </div>
+
+          <div id="matchQueue" class="match-queue hidden">
+            <div class="section-heading">
+              <div>
+                <h3>People who liked you</h3>
+                <p>Like them back to make a match.</p>
+              </div>
+              <i class="fas fa-heart"></i>
+            </div>
+
+            <div id="pendingLikesList"></div>
+          </div>
+
+          <div id="exploreList" class="explore-grid"></div>
+
+        </section>
+
+
+        <!-- ================= MESSAGES ================= -->
+        <section id="messagesView" class="view messages-view">
+
+          <div id="chatListContainer">
+
+            <div class="view-header">
+
+              <div>
+                <span class="eyebrow">MESSAGES</span>
+                <h2>Your conversations</h2>
+                <p>Chat with your matches.</p>
+              </div>
+
+            </div>
+
+            <div class="chat-search">
+              <i class="fas fa-search"></i>
+              <input id="chatSearchInput"
+                     type="search"
+                     placeholder="Search conversations...">
+            </div>
+
+            <div id="chatListContainerInner"></div>
+
+          </div>
+
+          <div id="chatScreenContainer" class="chat-screen-container"></div>
+
+        </section>
+
+
+        <!-- ================= PROFILE ================= -->
+        <section id="profileView" class="view">
+
+          <div class="profile-cover">
+
+            <div class="profile-cover-decoration"></div>
+
+            <div class="profile-main">
+
+              <div class="profile-photo-wrap">
+
+                <img id="profileAvatar"
+                     src="https://randomuser.me/api/portraits/lego/1.jpg"
+                     alt="Profile">
+
+                <span class="online-indicator"></span>
+
+              </div>
+
+              <div class="profile-heading">
+
+                <h2 id="profileUsername">
+                  Connectly User
+                  <span class="verified-badge">
+                    <i class="fas fa-check"></i>
+                  </span>
+                </h2>
+
+                <p id="profileStatus">Hey there!</p>
+
+              </div>
+
+              <div class="profile-buttons">
+
+                <button id="editProfileBtn" class="secondary-btn">
+                  <i class="fas fa-pen"></i>
+                  Edit
+                </button>
+
+                <button id="shareProfileBtn" class="secondary-btn">
+                  <i class="fas fa-share-nodes"></i>
+                  Share
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <div class="profile-content">
+
+            <div class="profile-stats">
+
+              <div class="stat">
+                <strong id="matchesCount">0</strong>
+                <span>Matches</span>
+              </div>
+
+              <div class="stat">
+                <strong id="likesCount">0</strong>
+                <span>Likes</span>
+              </div>
+
+              <div class="stat">
+                <strong id="viewsCount">0</strong>
+                <span>Views</span>
+              </div>
+
+            </div>
+
+
+            <div class="profile-progress-card">
+
+              <div class="progress-heading">
+                <div>
+                  <strong>Complete your profile</strong>
+                  <span>Profiles with more information get better matches.</span>
+                </div>
+
+                <i class="fas fa-sparkles"></i>
+              </div>
+
+              <div class="progress-track">
+                <div id="profileProgress" class="progress-bar"></div>
+              </div>
+
+            </div>
+
+
+            <div class="settings-section">
+
+              <div class="section-heading">
+                <div>
+                  <span class="eyebrow">SETTINGS</span>
+                  <h3>Account & preferences</h3>
+                </div>
+              </div>
+
+              <div id="settingsListContainer" class="settings-list"></div>
+
+            </div>
+
+            <div id="adminPanelDiv"></div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ================= EDIT PROFILE ================= -->
+        <section id="editProfileView" class="view">
+
+          <div class="view-header">
+
+            <div>
+              <span class="eyebrow">PROFILE</span>
+              <h2>Edit your profile</h2>
+              <p>Make your profile feel like you.</p>
+            </div>
+
+            <button id="changePhotoBtn" class="secondary-btn">
+              <i class="fas fa-camera"></i>
+              Change photo
+            </button>
+
+          </div>
+
+          <input id="photoUploadInput" type="file" accept="image/*" hidden>
+
+          <div class="edit-profile-card">
+
+            <div class="edit-photo">
+              <img id="editProfileAvatar"
+                   src="https://randomuser.me/api/portraits/lego/1.jpg">
+
+              <label for="photoUploadInput" class="photo-edit-button">
+                <i class="fas fa-camera"></i>
+              </label>
+            </div>
+
+            <div class="edit-form">
+
+              <label>
+                Name
+                <input id="editName" type="text">
+              </label>
+
+              <label>
+                Bio
+                <textarea id="editBio" rows="4"
+                          placeholder="Tell people something about you..."></textarea>
+              </label>
+
+              <label>
+                Intent
+                <select id="editIntent">
+                  <option value="Serious">Serious</option>
+                  <option value="Friendship">Friendship</option>
+                  <option value="Casual">Casual</option>
+                  <option value="Networking">Networking</option>
+                </select>
+              </label>
+
+              <label>
+                Interests
+                <input id="editInterests"
+                       type="text"
+                       placeholder="Music, football, technology...">
+              </label>
+
+              <div class="edit-actions">
+                <button id="cancelEditBtn" class="secondary-btn">
+                  Cancel
+                </button>
+
+                <button id="saveProfileBtn" class="primary-btn">
+                  Save changes
+                </button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- ================= SETTINGS DETAIL ================= -->
+        <section id="settingsDetailView" class="view">
+
+          <div class="view-header">
+
+            <div>
+              <button id="settingsBackBtn" class="back-inline">
+                <i class="fas fa-arrow-left"></i>
+                Back
+              </button>
+
+              <h2 id="settingsDetailTitle">Settings</h2>
+            </div>
+
+          </div>
+
+          <div id="settingsDetailContent" class="settings-detail-card"></div>
+
+        </section>
+
+      </section>
+
+    </div>
+
+
+    <!-- ================= MOBILE NAV ================= -->
+    <nav class="mobile-nav">
+
+      <button class="nav-item active" data-nav="swipe">
+        <i class="fas fa-heart"></i>
+        <span>Discover</span>
+      </button>
+
+      <button class="nav-item" data-nav="explore">
+        <i class="fas fa-compass"></i>
+        <span>Explore</span>
+      </button>
+
+      <button class="nav-item" data-nav="messages">
+        <i class="fas fa-message"></i>
+        <span>Chats</span>
+      </button>
+
+      <button class="nav-item" data-nav="stories">
+        <i class="fas fa-circle-play"></i>
+        <span>Stories</span>
+      </button>
+
+      <button class="nav-item" data-nav="profile">
+        <i class="fas fa-user"></i>
+        <span>Profile</span>
+      </button>
+
+    </nav>
+
+
+    <!-- ================= MATCH TOAST ================= -->
+    <div id="matchToast" class="match-toast">
+
+      <div class="match-icon">
+        <i class="fas fa-heart"></i>
+      </div>
+
+      <div>
+        <strong>It's a match!</strong>
+        <span>You both liked each other.</span>
+      </div>
+
+    </div>
+
+
+    <!-- ================= AI ================= -->
+    <div id="aiChatWindow" class="ai-window">
+
+      <div class="ai-header">
+
+        <div class="ai-title">
+          <div class="ai-avatar">
+            <i class="fas fa-wand-magic-sparkles"></i>
+          </div>
+
+          <div>
+            <strong>Connectly AI</strong>
+            <span>Smart assistant</span>
+          </div>
+        </div>
+
+        <button id="closeAiChat" class="icon-btn">
+          <i class="fas fa-xmark"></i>
+        </button>
+
+      </div>
+
+      <div id="aiChatBody" class="ai-body">
+
+        <div class="ai-message bot">
+          Hey! I'm Connectly AI. How can I help you today?
+        </div>
+
+      </div>
+
+      <div class="ai-input">
+
+        <input id="aiChatInput"
+               type="text"
+               placeholder="Ask Connectly AI...">
+
+        <button id="sendAiMsg">
+          <i class="fas fa-paper-plane"></i>
+        </button>
+
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <!-- ================= GLOBAL LOADING ================= -->
+  <div id="globalLoader" class="global-loader hidden">
+    <div class="loader-card">
+      <div class="loader"></div>
+      <span>Loading Connectly...</span>
+    </div>
+  </div>
+
+</div>
+
+
+<!-- Firebase -->
+<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-storage-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.11.0/firebase-messaging-compat.js"></script>
+
+<!-- Supabase -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script src="app.js"></script>
+
+</body>
+</html>
